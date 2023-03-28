@@ -18,7 +18,9 @@ Use editdist.exe just to compute and print the edit distance for two strings usi
 editdist.exe <string1> <string2>
 ```
 
-Us the Python wrapper to compute the edit distance for two strings using:
+If you want to use this in Python, you will need to move the `EditDist.cp39-win_amd64.pyd` (or alternative for your version) file to the same directory as your Python script. Alternatively, you could install it to your system with `python setup.py install`.
+
+Use the Python wrapper to compute the edit distance for two strings using:
 ```python
 from EditDist import compute_dist
 
@@ -39,7 +41,7 @@ If you want to use the Python wrapper, you can run the following commands:
 ```bash
 make python
 ```
-This will create a shared library for python (in Windows) using the CL compiler (probably won't work with linux). You will need the Microsoft Visuall C++ Build Tools installed to do this. You can install them [here](https://visualstudio.microsoft.com/visual-cpp-build-tools/). I have left the shared library in the repo called `EditDist.cp39-win_amd64.pyd` so you can use it without having to install the build tools if you are using Python 3.9. If you want to use the Python wrapper, you can run the following commands:
+This will create a shared library for python (in Windows) using the CL compiler (probably won't work with linux). You will need the Microsoft Visuall C++ Build Tools installed to do this. You can install them [here](https://visualstudio.microsoft.com/visual-cpp-build-tools/). I have left the shared library in the repo called `EditDist.cp39-win_amd64.pyd` so you can use it without having to install the build tools if you are using Python 3.9. There is also one for Python 3.10. If you want to use the Python wrapper, you can run the following commands:
 ```python
 from EditDist import compute_dist
 
