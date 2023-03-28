@@ -6,7 +6,7 @@
 int main(int argc, char *argv[])
 {
     if (argc != 3) {
-        printf("Usage: %s <word1> <word2>", argv[0]);
+        printf("Usage: %s <string1> <string2>", argv[0]);
         return 1;
     }
     
