@@ -1,9 +1,15 @@
 from setuptools import setup, Extension
+import os
 
-module = Extension('EditDist',
-             sources=['pybindings.c'],
-             extra_compile_args=['/O2'],
-             extra_objects=['EditDist.obj'])
+if os.path.exists('EditDist.obj'):
+    module = Extension('EditDist',
+                sources=['pybindings.c'],
+                extra_compile_args=['/O2'],
+                extra_objects=['EditDist.obj'])
+else:
+    module = Extension('EditDist',
+                sources=['pybindings.c', 'EditDist.c'],
+                extra_compile_args=['/O2'])
 
 setup(name='EditDist',
     version='1.0',
