@@ -11,8 +11,8 @@ int min_three(int a, int b, int c) {
 int compute_dist_char(char word1[], char word2[]) {
     int word1_len, word2_len, extra_left, extra;
 
-    word1_len = strlen(word1);
-    word2_len = strlen(word2);
+    word1_len = (int) strlen(word1);
+    word2_len = (int) strlen(word2);
     int *dists = malloc(sizeof(int) * (word1_len + 1));
 
     for (int i = 0; i <= word1_len; i++) {
@@ -42,8 +42,8 @@ int compute_dist_char(char word1[], char word2[]) {
 int compute_dist_wchar(wchar_t word1[], wchar_t word2[]) {
     int word1_len, word2_len, extra_left, extra;
 
-    word1_len = wcslen(word1);
-    word2_len = wcslen(word2);
+    word1_len = (int) wcslen(word1);
+    word2_len = (int) wcslen(word2);
     int *dists = malloc(sizeof(int) * (word1_len + 1));
 
     for (int i = 0; i <= word1_len; i++) {
