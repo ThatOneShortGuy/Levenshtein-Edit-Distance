@@ -1,11 +1,13 @@
+GCC_ARGS = -Wall -Wextra -std=c99 -O3
+
 exec: EditDist.o main.o
-	gcc -o editdist -O3 EditDist.o main.o
+	gcc -o editdist $(GCC_ARGS) EditDist.o main.o
 
 EditDist.o: EditDist.c EditDist.h
-	gcc -c EditDist.c -O3 -o EditDist.o
+	gcc -c EditDist.c $(GCC_ARGS) -o EditDist.o
 
-main.o: main.c EditDist.h
-	gcc -c main.c -O3 -o main.o
+main.o: main.c EditDist.h EditDist.o
+	gcc -c main.c $(GCC_ARGS) -o main.o
 
 python: EditDist.obj
 	-rmdir /s /q build

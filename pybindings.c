@@ -17,7 +17,7 @@ static PyObject *compute_distc(PyObject *self, PyObject *args) {
     wchar_t *word1_str = PyUnicode_AsWideCharString(word1, &word1_len);
     wchar_t *word2_str = PyUnicode_AsWideCharString(word2, &word2_len);
     
-    return Py_BuildValue("i", compute_dist_wchar(word1_str, word2_str));
+    return Py_BuildValue("i", compute_dist_wchar_t(word1_str, word2_str));
 }
 
 static PyObject *version(PyObject *self) {
@@ -26,7 +26,7 @@ static PyObject *version(PyObject *self) {
 
 static PyMethodDef myMethods[] = {
     {"compute_dist", (PyCFunction)compute_distc, METH_VARARGS, "Computes the edit distance between two words."},
-    {"version", (PyCFunction)version, METH_NOARGS, "Returns the version."},
+    {"__version__", (PyCFunction)version, METH_NOARGS, "Returns the version."},
     {NULL, NULL, 0, NULL}
 };
 
