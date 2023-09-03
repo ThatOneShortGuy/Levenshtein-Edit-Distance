@@ -17,7 +17,7 @@
         word2_len = (int) len_func(word2); \
         int dists[100]; \
  \
-        if (word1_len > 100 || word2_len > 100) { \
+        if (word1_len > 100) { \
             *dists = malloc(sizeof(int) * (word1_len + 1)); \
         } \
  \
@@ -38,7 +38,7 @@
             } \
         } \
  \
-        if (word1_len > 100 || word2_len > 100) { \
+        if (word1_len > 100) { \
             free(dists); \
         } \
         return extra; \
