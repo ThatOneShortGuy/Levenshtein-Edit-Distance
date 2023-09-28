@@ -1,4 +1,5 @@
-GCC_ARGS = -O3
+GCC_ARGS = -O3 -fopenmp
+VC_ARGS = /O2 /openmp:experimental
 SRC_PATH = src
 
 exec: EditDist.o main.o
@@ -10,14 +11,13 @@ EditDist.o: $(SRC_PATH)/EditDist.c $(SRC_PATH)/EditDist.h
 main.o: $(SRC_PATH)/main.c $(SRC_PATH)/EditDist.h $(SRC_PATH)/EditDist.o
 	gcc -c $(SRC_PATH)/main.c $(GCC_ARGS) -o $(SRC_PATH)/main.o
 
-python: EditDist.obj
-	-rmdir /s /q build
-	python setup.py build_ext --inplace
+python: $(SRC_PATH)/EditDist.obj
+	python setup.py build_ext --inplace --force
 
-EditDist.obj: $(SRC_PATH)/EditDist.c $(SRC_PATH)/EditDist.h
-	-"C:\Program Files\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat" && cl /c /O2 $(SRC_PATH)/EditDist.c
-	-"C:\Program Files\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat" && cl /c /O2 $(SRC_PATH)/EditDist.c
-	-"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat" && cl /c /O2 $(SRC_PATH)/EditDist.c
+$(SRC_PATH)/EditDist.obj: $(SRC_PATH)/EditDist.c $(SRC_PATH)/EditDist.h
+	-"C:\Program Files\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat" && cl /c $(VC_ARGS) $(SRC_PATH)/EditDist.c -Fo$(SRC_PATH)/EditDist.obj
+	-"C:\Program Files\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat" && cl /c $(VC_ARGS) $(SRC_PATH)/EditDist.c -Fo$(SRC_PATH)/EditDist.obj
+	-"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat" && cl /c $(VC_ARGS) $(SRC_PATH)/EditDist.c -Fo$(SRC_PATH)/EditDist.obj
 
 clean:
 	@ECHO OFF & \
